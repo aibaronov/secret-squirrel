@@ -1,0 +1,17 @@
+.email-item{
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    color: #E5CCFF;
+    padding-left: 20px;
+    height: 48px;
+    border-top: 1px solid black;
+    display: grid;
+    grid-template-columns: 200px 600px 50px;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.email-item div{
+    display: flex;
+    align-items: center;
+}

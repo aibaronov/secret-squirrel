@@ -1,0 +1,24 @@
+
+.container{
+    display: flex;
+    align-items: center;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    
+}
+
+.nav-links a{
+    padding-top: 10px;
+    margin-left: 2em;
+    text-decoration: none;
+    font-size: 1.5em;
+    /* color: #6916A9; */
+    color: #9f62e8;
+}
+
+.nav-links a:hover{
+    color: #B07DEE;
+}
+
+.nav-links a:last-child{
+    margin-right: 10em;
+}

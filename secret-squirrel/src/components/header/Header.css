@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    background-color: #323232;
+    height: 5em;
+
+}
+
+.squirrel-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Top Secret', sans-serif;
+    width: 10em;
+    height: 1.5em;
+    color: #9f62e8;
+    font-size: 2.25em;
+}

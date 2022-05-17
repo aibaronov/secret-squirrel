@@ -1,0 +1,9 @@
+.squirrel-container{
+    align-items: center;
+    margin-left: 4em
+}
+div .main-logo{
+    height: 4.5em;
+    border-radius: 50%;
+    align-items: center;
+}

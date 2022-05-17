@@ -1,0 +1,20 @@
+.main-container{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    height: 50em;
+}
+
+.sideLinks-container{
+    display: flex;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    background-color: #323232;
+    border-right: 1px solid black;
+    justify-content: center;
+    height: 100%;
+}
+
+.emailRows-container{
+    /* background-color: #eae7e8; */
+    background-color: #3f3b54;
+    height: 100%;
+}
