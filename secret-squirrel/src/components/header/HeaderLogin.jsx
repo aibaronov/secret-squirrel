@@ -1,10 +1,10 @@
 import React from 'react'
 import NavLogin from './NavLogin';
 import Logo from './Logo'
-import './Header.css'
+import './HeaderLogin.css'
 const HeaderLogin = () => {
   return (
-    <div className="container">
+    <div className="header-container">
       <Logo/>
       <div className='squirrel-header'>
         <h1>SECRET SQUIRREL</h1>

@@ -6,7 +6,7 @@ const Nav = () => {
     <div className="container">
         <ul >
             <li className='nav-links'>
-              <NavLink to='/main'>Main</NavLink>
+              {/* <NavLink to='/main'>Main</NavLink> */}
               <NavLink to='/About'>About</NavLink>
                 {/* <a href="#">Home</a>
 

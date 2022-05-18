@@ -1,23 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import HeaderLogin from './components/header/HeaderLogin';
+import LoginRegister from './components/loginRegister/LoginRegister';
+import Header from './components/header/Header';
+import Main from './components/main/Main';
 
 function App() {
-
+  const [validUser, setValidUser] = useState(false);
+  function validateUser(event){
+    console.log("Validate User Called");
+    setValidUser(true);
+  }
   return (
+
     <div className="App">
-      <HeaderLogin/>
-      {/* <main>
-        <Route exact path="/home">
-          <Main/>
-        </Route>
-        <Route exact path="/about">
-          <About/>
-        </Route>
-        <Route exact path="/">
-          <Login/>
-        </Route>
-      </main> */}
+      {validUser ? (<div><Header/><Main/></div>): (<div><HeaderLogin/><LoginRegister validateUser={validateUser}/></div>)}
     </div>
   );
 }

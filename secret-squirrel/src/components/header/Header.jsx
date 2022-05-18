@@ -4,7 +4,7 @@ import Logo from './Logo'
 import './Header.css'
 const Header = () => {
   return (
-    <div className="container">
+    <div className="links-container">
       <Logo/>
       <div className='squirrel-header'>
         <h1>SECRET SQUIRREL</h1>

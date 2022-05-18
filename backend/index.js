@@ -3,6 +3,8 @@ const emailData = require('./emailData/emailData');
 const express = require("express");
 const app = express();
 
+const userList = [];
+
 app.use(express.json());
 
 app.use(function(req, res, next) {
@@ -12,14 +14,31 @@ app.use(function(req, res, next) {
   });
 
 app.get("/", function(req, res) {
-  res.send(emailData);
+  res.status(200).send(emailData);
 });
 
 app.post("/send", function(req, res){
   console.log("Post received");
-  console.log(req.body);
   res.send('Message Received');
 });
+
+app.post('/register', function(req, res){
+  let newUser = req.body;
+  userList.push(newUser)
+  console.log(userList);
+  res.status(200).send('Registered user');
+})
+
+app.post('/login', function(req, res){
+  console.log(req.body);
+  let login = req.body;
+  userList.forEach(user => {
+    if(user.username === login.username && user.password === login.password){
+        res.status(200).send('Log in accepted');
+    }
+  })
+  res.status(400).send('Cannot find user');
+})
 
 let port = process.env.PORT;
 if(port == null || port == "") {

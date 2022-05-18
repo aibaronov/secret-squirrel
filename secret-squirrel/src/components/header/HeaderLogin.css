@@ -1,10 +1,13 @@
-.links-container{
-    display: flex;
-    /* grid-template-columns: 1fr 1fr 2fr; */
+.header-container{
+    display: grid;
+    grid-template-columns: 15% min-content 15%;
+    align-items: center;
     justify-content: space-between;
     background-color: #323232;
+    border-bottom: 2px solid black;
     height: 5em;
-
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    
 }
 
 .squirrel-header{

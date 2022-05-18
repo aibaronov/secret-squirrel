@@ -1,0 +1,60 @@
+.log-reg-container{
+    background-color: #3f3b54;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.log-reg-form{
+    margin: 80px;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #323232;
+    border: 3px solid black;
+    border-radius: 20px;
+    height: 300px;
+    width: 250px;
+    padding: 20px;
+    padding-top: 30px;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    color: #9f62e8;
+}
+
+.log-reg-form form input{
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.submit-button{
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    width: 5em;
+    height: 2em;
+    background-color: #9f62e8;
+    border-radius: 200px 200px 200px 200px;
+    font-weight: 900;
+}
+
+.submit-button:hover{
+    background-color: #B07DEE;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.log-reg-container input{
+    background-color: #3F3B54;
+    color: #F5F5F5F5;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    font-weight: bold;
+}
+
+.log-reg-form h3{
+    font-size: larger;
+    font-weight: 1000;
+}
+
+.button-holder{
+    text-align: center;
+}

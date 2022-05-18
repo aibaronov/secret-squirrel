@@ -1,11 +1,13 @@
 
-.container{
+.links-container{
     display: flex;
     align-items: center;
     font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
     
 }
-
+.nav-links{
+    margin-right: 0;
+}
 .nav-links a{
     padding-top: 10px;
     margin-left: 2em;
