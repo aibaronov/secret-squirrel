@@ -4,8 +4,9 @@ import SideLinks from './SideLinks'
 import EmailView from './EmailView'
 import './Main.css'
 
-const Main = () => {
+const Main = (props) => {
 const [emailData, setEmailData] = useState([]);
+const globalUserName = props.globalUserName;
 
 useEffect(() => {
     axios.get("http://localhost:5000/", {crossdomain: true})
@@ -22,7 +23,7 @@ console.log(`email data : ${emailData}`)
             <SideLinks/>
         </div>
         <div className='emailRows-container'>
-            <EmailView emails={emailData}/>
+            <EmailView emails={emailData} globalUserName={globalUserName}/>
         </div>
     </div>
   )

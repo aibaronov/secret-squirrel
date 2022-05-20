@@ -4,10 +4,10 @@ import Register from './Register';
 import './LoginRegister.css'
 
 const LoginRegister = (props) => {
-  let validateUser = props.validateUser;
+const getUserName= props.getUserName;
   return (
     <div className='log-reg-container'>
-        <Login validateUser={validateUser}/>
+        <Login getUserName={getUserName}/>
         <Register />
     </div>
   )

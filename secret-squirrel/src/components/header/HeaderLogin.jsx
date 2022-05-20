@@ -9,7 +9,7 @@ const HeaderLogin = () => {
       <div className='squirrel-header'>
         <h1>SECRET SQUIRREL</h1>
       </div>
-      <NavLogin/>
+      <NavLogin />
     </div>
   )
 }

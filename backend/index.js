@@ -2,43 +2,32 @@
 const emailData = require('./emailData/emailData');
 const express = require("express");
 const app = express();
-
+const {SERVER_PORT} = process.env;
+const {seed, register, login, sendMessage, getMessages} = require('./controller.js');
 const userList = [];
 
 app.use(express.json());
+
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
   });
+//Run this seed command in POSTMAN
+app.post('/seed', seed);
 
 app.get("/", function(req, res) {
   res.status(200).send(emailData);
 });
 
-app.post("/send", function(req, res){
-  console.log("Post received");
-  res.send('Message Received');
-});
+app.post('/getMessages', getMessages)
 
-app.post('/register', function(req, res){
-  let newUser = req.body;
-  userList.push(newUser)
-  console.log(userList);
-  res.status(200).send('Registered user');
-})
+app.post("/send", sendMessage);
 
-app.post('/login', function(req, res){
-  console.log(req.body);
-  let login = req.body;
-  userList.forEach(user => {
-    if(user.username === login.username && user.password === login.password){
-        res.status(200).send('Log in accepted');
-    }
-  })
-  res.status(400).send('Cannot find user');
-})
+app.post('/register', register)
+
+app.post('/login', login)
 
 let port = process.env.PORT;
 if(port == null || port == "") {
@@ -46,5 +35,5 @@ if(port == null || port == "") {
 }
 
 app.listen(port, function() {
- console.log("Server started successfully");
+ console.log(`Server started successfully on port ${port}`);
 });
