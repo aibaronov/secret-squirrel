@@ -1,20 +1,21 @@
 import React from 'react'
 import './EmailRow.css'
-const EmailRow = ({from, subject, message, received}) => {
+const EmailRow = ({from, subject, message, received, show}) => {
 // const timeStamp = new Date();
 const preview = message.substr(0, 6);
 let display = preview +'...'
 
   return (
-    <div className='email-item'>
-          <p>{from}</p>
+    <div className='email-item' >
+          <p onClick={show}>{from}</p>
           <div>
               {/* <p>{subject} </p> - <span> {message}</span> */}
-              <p>{display}</p>
+              <p onClick={show}>{display}</p>
               {/* <p>{timeStamp}</p> */}
 
           </div>
-          <p>{received}</p>
+          {/* <p onClick={show}>{received}</p> */}
+          <input type='checkbox' id='message'/>
         </div>
   )
 }

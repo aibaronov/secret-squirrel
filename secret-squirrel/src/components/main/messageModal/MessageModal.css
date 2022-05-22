@@ -1,0 +1,83 @@
+.modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    color: #E5CCFF;
+}
+
+.modal-content{
+    width: 500px;
+    background-color: #3f3b54;
+    border: 4px solid #333333;
+    border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+}
+
+.modal-header{
+    padding-top: 20px;
+    padding-bottom: 0px;
+    align-items: left;
+    /* margin:auto; */
+    
+}
+
+.modal-footer{
+    padding: 10px;
+    align-items: left;
+    margin:auto;
+}
+
+
+
+.modal-body{
+    padding: 20px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-body label span{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.received-header{
+    border-bottom: 1px solid #eee;
+}
+
+.modal-content button{
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    width: 5em;
+    height: 2em;
+    background-color: #9f62e8;
+    border-radius: 200px 200px 200px 200px;
+    margin-left: .8em;
+    font-weight: 900;
+}
+
+.modal-content button:hover{
+    background-color: #B07DEE;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.modal-content .modal-body input{
+    color: #3F3B54;
+    background-color: #F5F5F5F5;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    font-weight: bold;
+    width: 2em;
+    border-radius: 5px;
+}
+
+.modal-content label{
+    font-size: 15px;
+    font-weight: 900;
+}

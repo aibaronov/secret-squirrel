@@ -1,19 +1,32 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import EmailRow from './EmailRow'
+import MessageModal from './messageModal/MessageModal';
 import './EmailView.css'
 
 
 const EmailView = (props) => {
 const [messages, setMessages] = useState([]);
-let emailData = props.emails.emailData;
+const [messageView, setMessageView] = useState(false);
+const [userNameData, setUserNameData] = useState('');
+const [messageData, setMessageData] = useState('');
 
+
+let emailData = props.emails.emailData;
 const globalUserName = props.globalUserName;
 console.log(`email data`, emailData);
 
 
 
+function hideModal(event){
+    event.preventDefault();
+    setMessageView(false);
+}
+
 function dataLoader(){
+
+
+
     if(!emailData){
         return(
             <div></div>
@@ -23,22 +36,18 @@ function dataLoader(){
         return(
             <div>
             {
-                // emailData.map(({from, subject, message, received}) =>{
-                //     return(
-                //         <EmailRow
-                //             from={from}
-                //             subject={subject}
-                //             message={message}
-                //             received={received}
-                //             />
-                //             )
-                //         })
                 messages.map(({message, username}) =>{
+                    function showModal(event){
+                        event.preventDefault();
+                        setMessageView(true);
+                        setUserNameData(username);
+                        setMessageData(message);
+                    }
                     return(
                         <EmailRow
                             from={username}
                             message={message}
-                            />
+                            show={showModal}/>
                             )
                         })
                     }
@@ -62,6 +71,7 @@ function dataLoader(){
   return (
     <div className='emailView-wrapper'>
         {dataLoader()}
+        <MessageModal show={messageView} hide={hideModal} usernameData={userNameData} messageData={messageData}/>
 
     </div>
   )
