@@ -40,7 +40,7 @@ module.exports = {
         console.log('Getting messages...');
         const {username} = req.body;
         sequelize.query(`
-            SELECT message, username FROM messages
+            SELECT messages.id, message, username FROM messages
             JOIN users ON users.id = messages.user_id
             WHERE username = '${username}';
         `).then(dbRes => {
@@ -114,5 +114,16 @@ module.exports = {
 
         console.log("Message received");
         res.send("Message Received");
+    },
+    deleteMessage: (req, res) => {
+        
+        const message_id = req.params.id;
+        
+        sequelize.query(`
+            DELETE FROM messages
+            WHERE id = ${message_id};
+        `).then(dbRes => {
+            res.status(200).send(`Message id ${message_id} deleted`)
+        }).catch(err => {res.status(400).send(err)})
     }
 };

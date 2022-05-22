@@ -4,7 +4,6 @@ import EmailRow from './EmailRow'
 import MessageModal from './messageModal/MessageModal';
 import './EmailView.css'
 
-
 const EmailView = (props) => {
 const [messages, setMessages] = useState([]);
 const [messageView, setMessageView] = useState(false);
@@ -16,7 +15,30 @@ let emailData = props.emails.emailData;
 const globalUserName = props.globalUserName;
 console.log(`email data`, emailData);
 
+function messageRefresh(event){
+    console.log("Message Request Called");
+    axios.get("http://localhost:5000/getMessages", {crossdomain: true})
+    .then(res => {
+        setMessages(res.data);
+        console.log(res.data);
+    })
+    .catch(err => {console.log(err)})
+}
 
+
+function handleOnChange(event){
+    const messageID = event.target.id;
+    if(window.confirm("Are you sure you want to delete this message?")){
+        axios.delete(`http://localhost:5000/${messageID}`)
+        .then(res => {
+            console.log(res)
+            messageRefresh();
+        })
+            .catch(err=> {console.log(err)})
+    }else{
+        console.log('Message will not be deleted');
+    }
+}
 
 function hideModal(event){
     event.preventDefault();
@@ -24,9 +46,6 @@ function hideModal(event){
 }
 
 function dataLoader(){
-
-
-
     if(!emailData){
         return(
             <div></div>
@@ -36,7 +55,7 @@ function dataLoader(){
         return(
             <div>
             {
-                messages.map(({message, username}) =>{
+                messages.map(({id, message, username}) =>{
                     function showModal(event){
                         event.preventDefault();
                         setMessageView(true);
@@ -45,9 +64,11 @@ function dataLoader(){
                     }
                     return(
                         <EmailRow
+                            id={id}
                             from={username}
                             message={message}
-                            show={showModal}/>
+                            show={showModal}
+                            handleOnChange={handleOnChange}/>
                             )
                         })
                     }
@@ -64,10 +85,16 @@ function dataLoader(){
         .catch(err => {console.log(err)});
 
     }, [])
+
+    useEffect(() => {
+        messageRefresh();
+    }, [messages, setMessages])
+
     useEffect(() => {
         setMessages(messages);
         console.log("Messages: ", messages);
-    }, [messages, setMessages]);
+    }, [messages, messageRefresh]);
+
   return (
     <div className='emailView-wrapper'>
         {dataLoader()}

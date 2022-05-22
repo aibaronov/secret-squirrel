@@ -1,6 +1,6 @@
 import React from 'react'
 import './EmailRow.css'
-const EmailRow = ({from, subject, message, received, show}) => {
+const EmailRow = ({from, id, message, show, handleOnChange}) => {
 // const timeStamp = new Date();
 const preview = message.substr(0, 6);
 let display = preview +'...'
@@ -15,7 +15,7 @@ let display = preview +'...'
 
           </div>
           {/* <p onClick={show}>{received}</p> */}
-          <input type='checkbox' id='message'/>
+          <button className='delete-button' onClick={handleOnChange} id={id}>Delete</button>
         </div>
   )
 }
