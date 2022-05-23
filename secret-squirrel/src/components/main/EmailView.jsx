@@ -9,6 +9,7 @@ const [messages, setMessages] = useState([]);
 const [messageView, setMessageView] = useState(false);
 const [userNameData, setUserNameData] = useState('');
 const [messageData, setMessageData] = useState('');
+const [nVal, setnVal] = useState(0);
 
 
 let emailData = props.emails.emailData;
@@ -55,18 +56,20 @@ function dataLoader(){
         return(
             <div>
             {
-                messages.map(({id, message, username}) =>{
+                messages.map(({id, message, username, nval}) =>{
                     function showModal(event){
                         event.preventDefault();
                         setMessageView(true);
                         setUserNameData(username);
                         setMessageData(message);
+                        setnVal(nval);
                     }
                     return(
                         <EmailRow
                             id={id}
                             from={username}
                             message={message}
+                            nval={nval}
                             show={showModal}
                             handleOnChange={handleOnChange}/>
                             )
@@ -83,7 +86,6 @@ function dataLoader(){
             setMessages(res.data);    
         })
         .catch(err => {console.log(err)});
-
     }, [])
 
     useEffect(() => {
@@ -95,11 +97,20 @@ function dataLoader(){
         console.log("Messages: ", messages);
     }, [messages, messageRefresh]);
 
+    useEffect(()=>{
+        setnVal(nVal);
+        console.log("nVal from EmailView.jsx: ", nVal);
+    }, [nVal, setnVal])
+
   return (
     <div className='emailView-wrapper'>
         {dataLoader()}
-        <MessageModal show={messageView} hide={hideModal} usernameData={userNameData} messageData={messageData}/>
-
+        <MessageModal 
+            show={messageView} 
+            hide={hideModal} 
+            usernameData={userNameData} 
+            messageData={messageData}
+            nval={nVal}/>
     </div>
   )
 }

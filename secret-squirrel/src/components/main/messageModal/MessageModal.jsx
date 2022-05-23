@@ -1,13 +1,33 @@
 import React, {useState} from 'react'
 import axios from 'axios';
+import { decryptRSA } from '../encryptionFiles/encryptionFunctions';
 import './MessageModal.css'
-const ComposeModal = (props) => {
+const MessageModal = (props) => {
 
+    const [privateKey, setPrivateKey] = useState(0);
     const closeModal = props.hide;
     const usernameData = props.usernameData;
     const messageData = props.messageData;
+    const nval = props.nval;
 
     console.log(usernameData, messageData);
+
+    function getPrivateKey(event){
+        setPrivateKey(event.target.value);
+    }
+
+    function decryptHandler(event){
+        event.preventDefault();
+        let message = messageData.split(',');
+
+        console.log("Message Data from Message Modal: ", message);
+        console.log("Private Key", privateKey);
+        console.log("nVal: ", nval);
+        console.log(messageData);
+        let result = decryptRSA(message, privateKey, nval);
+
+        alert(result.join(''));
+    }
 
     if(!props.show){
         return null
@@ -27,9 +47,8 @@ const ComposeModal = (props) => {
                     <label>Message:</label><br/><br/>
                     <p className='message-body' rows='4' cols='60'>{messageData}</p><br/>
                     <label>Enter Private Key:  </label>
-                    <input className='private-key'></input>
-
-                    <p className='message-body'></p>
+                    <input className='private-key' onChange={getPrivateKey}></input><br/>
+                    <button className='button' onClick={decryptHandler} >Decrypt</button>
                 </div>
             </div>
             
@@ -41,4 +60,4 @@ const ComposeModal = (props) => {
   )
 }
 
-export default ComposeModal
+export default MessageModal

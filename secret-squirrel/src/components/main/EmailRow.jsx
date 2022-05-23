@@ -1,6 +1,6 @@
 import React from 'react'
 import './EmailRow.css'
-const EmailRow = ({from, id, message, show, handleOnChange}) => {
+const EmailRow = ({from, id, message, nval, show, handleOnChange}) => {
 // const timeStamp = new Date();
 const preview = message.substr(0, 6);
 let display = preview +'...'
@@ -10,7 +10,7 @@ let display = preview +'...'
           <p onClick={show}>{from}</p>
           <div>
               {/* <p>{subject} </p> - <span> {message}</span> */}
-              <p onClick={show}>{display}</p>
+              <p onClick={show}>{display} <span>{nval}</span></p>
               {/* <p>{timeStamp}</p> */}
 
           </div>

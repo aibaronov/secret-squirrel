@@ -26,6 +26,7 @@ module.exports = {
         create table messages(
             id SERIAL PRIMARY KEY,
             message VARCHAR(500),
+            nVal INTEGER,
             user_id INTEGER REFERENCES users(id)
             );   
          `).then(()=> {
@@ -40,7 +41,7 @@ module.exports = {
         console.log('Getting messages...');
         const {username} = req.body;
         sequelize.query(`
-            SELECT messages.id, message, username FROM messages
+            SELECT messages.id, message, nVal, username FROM messages
             JOIN users ON users.id = messages.user_id
             WHERE username = '${username}';
         `).then(dbRes => {
@@ -94,7 +95,7 @@ module.exports = {
     },
     sendMessage: (req, res) => {
         console.log(req.body);
-        const {username, message} = req.body;
+        const {username, encryptedMessage, nVal} = req.body;
         let userID = 0;
         sequelize.query(`
             SELECT id FROM users
@@ -105,8 +106,8 @@ module.exports = {
                 console.log('user id', userID);
 
                 sequelize.query(`
-                    INSERT INTO messages(message, user_id)
-                    VALUES('${message}', ${userID});
+                    INSERT INTO messages(message, user_id, nVal)
+                    VALUES('${encryptedMessage}', ${userID}, ${nVal});
                     `).then(dbRes => {
                         console.log("message posted to DB")
                         }).catch(err => console.log(err))
