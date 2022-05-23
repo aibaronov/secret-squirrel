@@ -21,7 +21,7 @@ console.log(`email data : ${emailData}`)
   return (
     <div className='main-container'>
         <div className='sideLinks-container'>
-            <SideLinks/>
+            <SideLinks globalUserName={globalUserName}/>
         </div>
         <div className='emailRows-container'>
             <EmailView emails={emailData} globalUserName={globalUserName} />

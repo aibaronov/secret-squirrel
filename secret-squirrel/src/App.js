@@ -17,24 +17,9 @@ const nameState = {
 }
 
 function App() {
-  // const [validUser, setValidUser] = useState(false);
-
-  // const value = "Context Value";
-
-  // function validateUser(event){
-  //   console.log("Validate User Called");
-  //   setValidUser(true);
-  // }
-
-  // function logoutUser(event){
-  //   console.log('Logout user called');
-  //   setValidUser(false);
-  // }
-
 
   const [state, dispatch] = useReducer(validStateReducer, initialState);
   const [globalUserName, setGlobalUsername] = useState('');
-  // const [nameState, dispatchNameState] = useReducer(nameStateReducer, nameState);
 
   useEffect(()=>{
     console.log("State", state.valid);

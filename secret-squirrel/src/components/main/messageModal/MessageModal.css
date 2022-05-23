@@ -48,13 +48,22 @@
     font-weight: 400;
 }
 
+.message-container{
+    word-wrap: break-word;
+}
+
+.private-key-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .received-header{
     border-bottom: 1px solid #eee;
 }
 
 .modal-content button{
     font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-    width: 5em;
+    width: 6em;
     height: 2em;
     background-color: #9f62e8;
     border-radius: 200px 200px 200px 200px;
@@ -68,13 +77,13 @@
     cursor: pointer;
 }
 
-.modal-content .modal-body input{
+.modal-content .modal-body .private-key{
     color: #3F3B54;
     background-color: #F5F5F5F5;
     font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
     font-weight: bold;
-    width: 2em;
-    border-radius: 5px;
+    width: 4em;
+
 }
 
 .modal-content label{

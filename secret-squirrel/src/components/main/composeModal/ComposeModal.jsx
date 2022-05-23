@@ -6,6 +6,12 @@ import './ComposeModal.css'
 const ComposeModal = (props) => {
     const [userName, setUserName] = useState('');
     const [message, setMessage] = useState('');
+    const closeModal = props.onClose;
+    const globalUserName = props.globalUserName;
+    
+    useEffect(() => {
+        console.log("Global Username in ComposeModal.jsx", globalUserName);
+    }, [])
 
     if(!props.show){
         return null
@@ -21,8 +27,9 @@ const ComposeModal = (props) => {
     function messageSubmitHandler(event){
         event.preventDefault();
         const encrypted = encryptRSA(message);
-        alert(`The encrypted message is: ${encrypted.encryptedMessage}. The private key is: ${encrypted.dVal}`)
+        alert(`The encrypted message is: ${encrypted.encryptedMessage}. The private key is: ${encrypted.dVal}. Message sent to ${userName} from ${globalUserName}.`)
         const bodyObj = {
+            sender: globalUserName,
             username: userName,
             encryptedMessage: encrypted.encryptedMessage.join(','),
             nVal: encrypted.nVal
@@ -31,7 +38,8 @@ const ComposeModal = (props) => {
         axios.post('http://localhost:5000/send', bodyObj)
         .then((res) => console.log(res.data));
     }
-const closeModal = props.onClose;
+
+
 
 
   return (

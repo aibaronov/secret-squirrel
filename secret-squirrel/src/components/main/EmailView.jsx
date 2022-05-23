@@ -7,6 +7,7 @@ import './EmailView.css'
 const EmailView = (props) => {
 const [messages, setMessages] = useState([]);
 const [messageView, setMessageView] = useState(false);
+const [sender, setSender] = useState('');
 const [userNameData, setUserNameData] = useState('');
 const [messageData, setMessageData] = useState('');
 const [nVal, setnVal] = useState(0);
@@ -56,10 +57,11 @@ function dataLoader(){
         return(
             <div>
             {
-                messages.map(({id, message, username, nval}) =>{
+                messages.map(({id, sender, message, username, nval}) =>{
                     function showModal(event){
                         event.preventDefault();
                         setMessageView(true);
+                        setSender(sender);
                         setUserNameData(username);
                         setMessageData(message);
                         setnVal(nval);
@@ -67,7 +69,7 @@ function dataLoader(){
                     return(
                         <EmailRow
                             id={id}
-                            from={username}
+                            from={sender}
                             message={message}
                             nval={nval}
                             show={showModal}
@@ -80,13 +82,14 @@ function dataLoader(){
     useEffect(() => {
         let bodyObj = {username: globalUserName}
         console.log('Body Object', bodyObj)
+
         axios.post('http://localhost:5000/getMessages', bodyObj)
         .then(res => {
             console.log(res.data)
             setMessages(res.data);    
         })
         .catch(err => {console.log(err)});
-    }, [])
+    }, [messages, setMessages]);
 
     useEffect(() => {
         messageRefresh();
@@ -96,6 +99,11 @@ function dataLoader(){
         setMessages(messages);
         console.log("Messages: ", messages);
     }, [messages, messageRefresh]);
+
+    useEffect(()=> {
+        setSender(sender);
+        console.log("Sender", sender);
+    }, [sender, setSender])
 
     useEffect(()=>{
         setnVal(nVal);
@@ -108,6 +116,7 @@ function dataLoader(){
         <MessageModal 
             show={messageView} 
             hide={hideModal} 
+            sender={sender}
             usernameData={userNameData} 
             messageData={messageData}
             nval={nVal}/>
