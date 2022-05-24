@@ -51,9 +51,21 @@ const Register = () => {
             password: password
         }
         if(userNameValid && emailValid && passwordValid){
-            alert(`Username: ${userName}, email: ${email}, password: ${password}, repeatPassword: ${repeatPassword}`);
+            // alert(`Username: ${userName}, email: ${email}, password: ${password}, repeatPassword: ${repeatPassword}`);
             axios.post('http://localhost:5000/register', bodyObj)
-            .then(res=> console.log(res.data));
+            .then(res=> {
+                console.log(res.data)
+                 alert(`Username: ${userName}, email: ${email}, Successfully registered.`);
+                // alert(res.data);
+                }).catch(err=>{
+                    // alert(err)
+                    let response = err.response.data;
+                    if(response === 'SequelizeUniqueConstraintError'){
+                        alert("Username already exists");
+                    }
+                    console.log(response);
+                }
+                );
 
         } else{
             alert("Invalid entries");

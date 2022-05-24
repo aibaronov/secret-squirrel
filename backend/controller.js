@@ -18,7 +18,7 @@ module.exports = {
 
         create table users (
             id SERIAL PRIMARY KEY,
-            username VARCHAR(50),
+            username VARCHAR(50) UNIQUE,
             email VARCHAR(50),
             password VARCHAR(200)
         );
@@ -64,8 +64,13 @@ module.exports = {
             VALUES('${username}', '${email}', '${pinHash}');
         `).then(dbRes => {
             console.log('User added to DB!')
-            res.status(200).send(dbRes[0]);
-        }).catch(err => {console.log("failed to add user to DB", err)});
+            console.log(dbRes[0][0]);
+            res.status(200).send(dbRes[0][0]);
+        }).catch(err => {{
+            console.log("failed to add user to DB", err.name)}
+            res.status(400).send(err.name)
+        }
+            );
         
     }, 
 
