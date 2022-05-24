@@ -17,6 +17,11 @@ const MessageModal = (props) => {
         setPrivateKey(event.target.value);
     }
 
+    function onClose(event){
+        closeModal(event);
+        setDecryptedMessage('');
+    }
+
     function decryptHandler(event){
         event.preventDefault();
         let message = messageData.split(',');
@@ -27,13 +32,10 @@ const MessageModal = (props) => {
         setDecryptedMessage('');
     }
 
-    function onClick(event){
-        closeModal();
-        clearMessage();
-    }
-    useEffect(() => {
-        setDecryptedMessage(decryptedMessage);
-    }, [decryptedMessage, setDecryptedMessage]);
+    // useEffect(() => {
+    //     setDecryptedMessage(decryptedMessage);
+    // }, [decryptedMessage, setDecryptedMessage]);
+
 
     if(!props.show){
         return null
@@ -65,7 +67,7 @@ const MessageModal = (props) => {
             </div>
             
             <div className="modal-footer">
-                <button className="button" onClick={closeModal}>Close</button>
+                <button className="button" onClick={onClose}>Close</button>
             </div>
         </div>
     </div>

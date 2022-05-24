@@ -80,17 +80,20 @@ function dataLoader(){
                     }
             </div> )}
         }
+
     useEffect(() => {
         let bodyObj = {username: globalUserName}
         console.log('Body Object', bodyObj)
-
-        axios.post('http://localhost:5000/getMessages', bodyObj)
-        .then(res => {
-            console.log(res.data)
-            setMessages(res.data);    
-        })
-        .catch(err => {console.log(err)});
-    }, [messages, setMessages]);
+        const interval = setInterval(() => {
+            axios.post('http://localhost:5000/getMessages', bodyObj)
+            .then(res => {
+                console.log(res.data)
+                setMessages(res.data);    
+            })
+            .catch(err => {console.log(err)});
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         setMessages(messages);

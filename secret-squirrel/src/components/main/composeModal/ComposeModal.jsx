@@ -20,6 +20,7 @@ const ComposeModal = (props) => {
         event.preventDefault();
         setUserName(event.target.value);
     }
+
     function getMessage(event){
         event.preventDefault();
         setMessage(event.target.value);
@@ -27,16 +28,25 @@ const ComposeModal = (props) => {
     function messageSubmitHandler(event){
         event.preventDefault();
         const encrypted = encryptRSA(message);
-        alert(`The encrypted message is: ${encrypted.encryptedMessage}. The private key is: ${encrypted.dVal}.`)
-        const bodyObj = {
-            sender: globalUserName,
-            username: userName,
-            encryptedMessage: encrypted.encryptedMessage.join(','),
-            nVal: encrypted.nVal
+        if(encrypted.encryptedMessage.join(',').length > 500){
+            alert("Message must be 500 characters of less");
+        }else{
+            alert(`The encrypted message is: ${encrypted.encryptedMessage}. The private key is: ${encrypted.dVal}.`)
+            const bodyObj = {
+                sender: globalUserName,
+                username: userName,
+                encryptedMessage: encrypted.encryptedMessage.join(','),
+                nVal: encrypted.nVal
+            }
+            console.log(bodyObj);
+            axios.post('http://localhost:5000/send', bodyObj)
+            .then((res) => {
+                console.log(res.data)
+                setMessage('');
+            }).catch(err => {
+                console.log(err);
+            });
         }
-        console.log(bodyObj);
-        axios.post('http://localhost:5000/send', bodyObj)
-        .then((res) => console.log(res.data));
     }
 
 
