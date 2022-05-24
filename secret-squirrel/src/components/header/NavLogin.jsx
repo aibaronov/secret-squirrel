@@ -6,12 +6,8 @@ const Nav = () => {
     <div className="container">
         <ul >
             <li className='nav-links'>
-              {/* <NavLink to='/main'>Main</NavLink> */}
-              <NavLink to='/'>About</NavLink>
-                {/* <a href="#">Home</a>
-
-                <a href="#">About</a>
-                <a href="#">Log Out</a> */}
+              <NavLink to='/about'>About</NavLink>
+              <NavLink to='/'>Log In</NavLink>
             </li>
         </ul>
     </div>

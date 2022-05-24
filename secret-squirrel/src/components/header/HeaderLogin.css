@@ -1,6 +1,6 @@
 .header-container{
     display: grid;
-    grid-template-columns: 15% min-content 15%;
+    grid-template-columns: 20% min-content 20%;
     align-items: center;
     justify-content: space-between;
     background-color: #323232;

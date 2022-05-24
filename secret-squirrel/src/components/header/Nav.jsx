@@ -22,17 +22,9 @@ const Nav = (props) => {
             <li className='nav-links'>
               {state.valid ? (
               <div>
-                <NavLink to='/'>About</NavLink>
                 <NavLink to='/' onClick={logoutUser}>Log Out</NavLink>
               </div>
               ) : <NavLink to='/' onclick={logoutUser} >Register / Log In</NavLink>}
-              {/* <NavLink to='/main'>Main</NavLink>
-              <NavLink to='/About'>About</NavLink>
-              <NavLink to='/' onClick={logoutUser}>Log Out</NavLink> */}
-                {/* <a href="#">Home</a>
-
-                <a href="#">About</a>
-                <a href="#">Log Out</a> */}
             </li>
         </ul>
     </div>

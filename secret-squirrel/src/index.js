@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
+// import About from './components/otherPages/About';
 import About from './components/otherPages/About';
 import MainPage from './components/main/MainPage';
 import reportWebVitals from './reportWebVitals';

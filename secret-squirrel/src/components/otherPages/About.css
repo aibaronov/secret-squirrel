@@ -1,0 +1,37 @@
+.background-container{
+    background-color: #3f3b54;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    height: 100em;
+
+}
+
+.header{
+    font-size: 2em;
+    color: #9f62e8;
+}
+.header:first-child{
+    margin-top: 1em;
+}
+p{
+    line-height:35px;
+}
+
+.info-container{
+    color: #F5F5F5F5;
+    background-color:#323232;
+    /* color: #00FFFF; */
+    margin-top: 2em;
+    max-width: 40em;
+    padding-left: 2em;
+    padding-right: 2em;
+
+    font-size: 25px;
+    height: 52em;
+    border-radius: 20px;
+}
+
+.info-container .rsa-link{
+    color:#9f62e8;
+}
