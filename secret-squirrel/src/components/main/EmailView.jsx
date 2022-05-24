@@ -13,6 +13,7 @@ const [messageData, setMessageData] = useState('');
 const [nVal, setnVal] = useState(0);
 
 
+
 let emailData = props.emails.emailData;
 const globalUserName = props.globalUserName;
 console.log(`email data`, emailData);
@@ -90,10 +91,6 @@ function dataLoader(){
         })
         .catch(err => {console.log(err)});
     }, [messages, setMessages]);
-
-    useEffect(() => {
-        messageRefresh();
-    }, [messages, setMessages])
 
     useEffect(() => {
         setMessages(messages);

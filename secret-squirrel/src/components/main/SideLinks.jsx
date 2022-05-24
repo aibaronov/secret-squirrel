@@ -23,10 +23,11 @@ const SideLinks = (props) => {
     <div className='sideLinks'>
       <ul>
         <li><button className='compose-button' href='#' onClick={modalRenderHandler}>Compose</button></li>
-        <li><a href="#">Inbox</a></li>
-        <li><a href="#">Delete</a></li>
         <ComposeModal show={showModal} onClose={closeModalHandler} globalUserName={globalUserName}/>
       </ul>
+      <div className='username-container'>
+        <h1>WELCOME</h1><br/>
+        <h1 className='global-username'>{globalUserName}</h1></div>
       
       
       

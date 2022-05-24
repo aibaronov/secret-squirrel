@@ -48,7 +48,7 @@ module.exports = {
         `).then(dbRes => {
             res.status(200).send(dbRes[0]);
             console.log(dbRes[0])
-        }).catch(err => console.log(err));
+        }).catch(err => res.status(400).send(400));
     },
 
     register: (req, res) => {
