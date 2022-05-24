@@ -27,7 +27,7 @@ const ComposeModal = (props) => {
     function messageSubmitHandler(event){
         event.preventDefault();
         const encrypted = encryptRSA(message);
-        alert(`The encrypted message is: ${encrypted.encryptedMessage}. The private key is: ${encrypted.dVal}. Message sent to ${userName} from ${globalUserName}.`)
+        alert(`The encrypted message is: ${encrypted.encryptedMessage}. The private key is: ${encrypted.dVal}.`)
         const bodyObj = {
             sender: globalUserName,
             username: userName,
